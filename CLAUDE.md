@@ -263,7 +263,7 @@ Board of Directors (Human — you, the operator)
     │
     ├── PROGRAM DEPARTMENTS
     │
-    ├── Director of Incubator Programs — Br. Fahad (Ph1)
+    ├── Director of Incubator Programs — Program Lead (Ph1)
     │   ├── Intake Coordinator
     │   ├── Program Manager
     │   ├── Mentor Coordinator
@@ -271,7 +271,7 @@ Board of Directors (Human — you, the operator)
     │   ├── Workshop Facilitator (Ph2)
     │   └── Founder Success Coach (Ph2)
     │
-    ├── Director of Accelerator Programs — Sr. Darain (Ph1)
+    ├── Director of Accelerator Programs — Program Lead (Ph1)
     │   ├── Program Manager
     │   ├── Mentor Coordinator
     │   ├── Investor Relations Manager
@@ -2517,12 +2517,12 @@ Escalate to Board when corrective action cycle_count reaches 3 with no resolutio
 Both follow the same pattern. Director is the department head. They hire their
 team. They monitor quality and request headcount when performance degrades.
 
-**Director of Incubator (Br. Fahad):** Owns full incubator lifecycle. On first
+**Director of Incubator (Program Lead):** Owns full incubator lifecycle. On first
 run, request hires for: Intake Coordinator (6h heartbeat), Program Manager (12h),
 Mentor Coordinator (24h), Curriculum Developer (24h). Phase 2: Workshop
 Facilitator and Founder Success Coach.
 
-**Director of Accelerator (Sr. Darain):** Owns full accelerator lifecycle. On
+**Director of Accelerator (Program Lead):** Owns full accelerator lifecycle. On
 first run, request hires for: Program Manager (12h), Mentor Coordinator (24h),
 Investor Relations Manager (24h). Phase 2: Pitch Coach and Demo Day Coordinator.
 
@@ -2541,8 +2541,8 @@ path routing. Warm, culturally aware communication.
 - Commitment level
 
 Score 0-40 → reject with constructive feedback and next steps.
-Score 41-65 → Incubator path (Br. Fahad).
-Score 66-100 → Accelerator path (Sr. Darain).
+Score 41-65 → Incubator path (Incubator Program Director).
+Score 66-100 → Accelerator path (Accelerator Program Director).
 
 **Tone:** Warm, respectful. "Masha'Allah" for genuine achievement.
 "Insha'Allah" for future plans. "Br."/"Sr." when name and gender are known.
@@ -3207,8 +3207,8 @@ N8N_BRIDGE_PORT=3300
 | Escalation: ED | auto_score < 60 for 4 runs post-corrective-action |
 | Board notification | auto_score < 40 any run OR cycle_count = 3 OR downstream damage |
 | Board is | Final escalation point — no unresolvable state |
-| Incubator contact | Br. Fahad |
-| Accelerator contact | Sr. Darain |
+| Incubator contact | Incubator Program Director |
+| Accelerator contact | Accelerator Program Director |
 | Incubator score | 41-65 |
 | Accelerator score | 66-100 |
 | Reject score | 0-40 |

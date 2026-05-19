@@ -1,6 +1,6 @@
 {
   "org": {
-    "name": "Your Org Name",
+    "name": "Your Organization Name",
     "tagline": "One-line description",
     "mission": "Full mission statement",
     "community_served": "Who you serve",
@@ -9,23 +9,29 @@
     "state_of_incorporation": "TX",
     "fiscal_year_end": "12-31",
     "website": "https://yourorg.org",
-    "email": "info@yourorg.org",
+    "email": "y",
     "phone": "",
     "address": ""
   },
   "programs": {
     "incubator": {
       "name": "Incubator Program",
-      "director_name": "Br. Fahad",
-      "director_contact": "fahad@yourorg.org",
-      "score_range": [41, 65],
+      "director_name": "Incubator Program Director",
+      "director_contact": "incubator@yourorg.org",
+      "score_range": [
+        41,
+        65
+      ],
       "description": "Early-stage founders needing foundational support"
     },
     "accelerator": {
       "name": "Accelerator Program",
-      "director_name": "Sr. Darain",
-      "director_contact": "darain@yourorg.org",
-      "score_range": [66, 100],
+      "director_name": "Accelerator Program Director",
+      "director_contact": "accelerator@yourorg.org",
+      "score_range": [
+        66,
+        100
+      ],
       "description": "Growth-stage founders ready to scale"
     }
   },

@@ -136,8 +136,8 @@ This should display your GPU. If it fails, install or reinstall the NVIDIA Conta
 git clone https://github.com/your-org/incubator-os.git
 cd incubator-os
 
-# 2. Fill in your organization details FIRST
-nano org.config.json   # org name, mission, program directors, cultural tone
+# 2. Run the organization setup wizard FIRST
+python3 wizard.py
 
 # 3. Fill in technical config
 cp .env.example .env
@@ -162,8 +162,8 @@ bash scripts/download-model.sh
 6. Create your Company and Executive Director in Paperclip using your org config
 7. Print your dashboard URL and next steps
 
-> **Note:** `org.config.json` is what makes this reusable across organizations.
-> Fill it in before running `./setup.sh` — it controls your org name, mission,
+> **Note:** `python3 wizard.py` writes `org.config.json`, which is what makes this reusable across organizations.
+> Run it before `./setup.sh` — it controls your org name, mission,
 > program director contacts, and cultural communication style.
 > The model file must also exist locally before running setup (step 5 handles this).
 
@@ -182,8 +182,8 @@ bash scripts/download-model.sh
       Director of Finance
       Director of Administration
       Director of Marketing & Communications
-      Director of Incubator Programs (Br. Fahad)
-      Director of Accelerator Programs (Sr. Darain)
+      Director of Incubator Programs
+      Director of Accelerator Programs
       Director of Impact, Quality & Evaluation
    → Each director will then request their own team hires (approve those too)
 

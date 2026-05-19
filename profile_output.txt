@@ -3,9 +3,9 @@
 > Auto-generated test
 
 ## Who We Are
-**Name:** Your Org Name
+**Name:** Your Organization Name
 **Mission:** Full mission statement
 ## Routing Reference
 - Score 0-40: Decline
-- Score 41-65: Incubator -- contact Br. Fahad
-- Score 66-100: Accelerator -- contact Sr. Darain
+- Score 41-65: Incubator -- contact Incubator Program Director
+- Score 66-100: Accelerator -- contact Accelerator Program Director

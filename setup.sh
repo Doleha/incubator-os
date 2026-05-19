@@ -34,12 +34,12 @@ done
 
 # Validate org config and generate org-profile.md before starting services
 if [ ! -f org.config.json ]; then
-  echo -e "${RED}Error: org.config.json not found.${NC}"
-  echo "Fill in org.config.json with your organization details before running setup."
-  exit 1
+  echo -e "${YELLOW}org.config.json not found. Launching setup wizard...${NC}"
+  python3 wizard.py
 fi
 python3 -c "import json; json.load(open('org.config.json'))" 2>/dev/null || {
   echo -e "${RED}Error: org.config.json is not valid JSON.${NC}"
+  echo "Re-run: python3 wizard.py"
   exit 1
 }
 echo "  Generating org profile for agents..."
