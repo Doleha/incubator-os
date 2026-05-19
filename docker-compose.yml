@@ -1,0 +1,71 @@
+version: '3.8'
+services:
+  paperclip:
+    image: paperclipai/paperclip:latest
+    ports:
+      - "3100:3100"
+    volumes:
+      - paperclip_data:/data
+      - ./instructions:/app/instructions:ro
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+
+  llm:
+    image: ghcr.io/ggerganov/llama.cpp:server
+    ports:
+      - "9874:9874"
+    volumes:
+      - ./models:/models
+    command: >
+      -hf unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q4_K_XL
+      --ctx-size 32768
+      --n-gpu-layers 999
+      --n-cpu-moe 17
+      --flash-attn on
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 4096
+      --ubatch-size 1024
+      --parallel 2
+      --queue-size 20
+      --temp 0.7
+      --top-p 0.8
+      --top-k 20
+      --presence-penalty 1.5
+      --spec-type draft-mtp
+      --spec-draft-n-max 6
+      --port 9874
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  staff-ui:
+    build: ./staff-ui
+    ports:
+      - "80:80"
+    environment:
+      - VITE_SUPABASE_URL=${SUPABASE_URL}
+      - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - VITE_ACTIVE_PHASE=${ACTIVE_PHASE:-1}
+
+  webhook-handler:
+    build: ./webhook-handler
+    ports:
+      - "3200:3200"
+    environment:
+      - PAPERCLIP_API_URL=http://paperclip:3100
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+      - EVOLUTION_API_URL=${EVOLUTION_API_URL}
+      - EVOLUTION_API_KEY=${EVOLUTION_API_KEY}
+      - EVOLUTION_INSTANCE_NAME=${EVOLUTION_INSTANCE_NAME}
+      - WEBHOOK_PORT=3200
+    depends_on:
+      - paperclip
+
+volumes:
+  paperclip_data:

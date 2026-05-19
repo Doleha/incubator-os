@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.env
+.env.local
+*.js.map
+*.d.ts
+.ids
+models/
+
+# Build outputs
+staff-ui/dist/
+adapter/dist/
+webhook-handler/dist/
+extensions/n8n-bridge/dist/
+
+# pnpm
+.pnpm-store/
+
+# OS
+.DS_Store
+Thumbs.db

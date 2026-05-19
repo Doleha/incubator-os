@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  n8n-bridge:
+    build: ./extensions/n8n-bridge
+    ports:
+      - "3300:3300"
+    environment:
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
+      - PAPERCLIP_API_URL=http://paperclip:3100
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+      - N8N_BRIDGE_PORT=3300

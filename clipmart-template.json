@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "company": {
+    "name": "Nonprofit Incubator & Accelerator",
+    "description": "AI-powered operations platform for nonprofit incubator and accelerator programs serving founders from underserved communities.",
+    "goal": "Run full-cycle Incubator and Accelerator programs — from founder intake through graduation and alumni success — serving underserved communities with expert mentorship, structured curriculum, funding access, and AI-assisted operations."
+  },
+  "agents": [
+    {
+      "name": "Executive Director",
+      "role": "ceo",
+      "title": "Executive Director",
+      "reportsTo": null,
+      "capabilities": "Strategic leadership of a nonprofit incubator and accelerator. Oversees all departments. Builds the organization through sequential director hires approved by the Board. Deep knowledge of nonprofit operations, founder development, fundraising, compliance, and community-centered programming.",
+      "adapterType": "local_llm",
+      "adapterConfig": {
+        "instructionsFilePath": "executive-director.md"
+      },
+      "runtimeConfig": {
+        "schedule": {
+          "enabled": true,
+          "intervalSec": 86400,
+          "maxConcurrentRuns": 1
+        },
+        "contextMode": "fat"
+      },
+      "budgetMonthlyCents": 0
+    }
+  ],
+  "notes": "After import: (1) Apply Phase 1 migrations, (2) Register local_llm adapter in Paperclip, (3) Start llama-server, (4) docker compose up, (5) Approve CEO strategy, (6) Approve director hire requests as they appear. ED starts at 24h heartbeat during Phase 1 org-building, transitions to weekly once all Phase 1 directors are hired."
+}

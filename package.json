@@ -1,0 +1,18 @@
+{
+  "name": "incubator-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered operations platform for nonprofit incubator and accelerator organizations",
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "adapter",
+    "staff-ui",
+    "webhook-handler",
+    "extensions/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
