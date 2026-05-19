@@ -6,6 +6,7 @@ dist/
 *.d.ts
 .ids
 models/
+.context/
 
 # Build outputs
 staff-ui/dist/

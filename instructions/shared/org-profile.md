@@ -8,7 +8,7 @@
 **Mission:** Full mission statement
 **Community Served:** Who you serve
 **Website:** https://yourorg.org
-**Contact:** y
+**Contact:** info@yourorg.org
 
 ## Our Programs
 
