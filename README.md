@@ -436,7 +436,7 @@ Pull requests are welcome. Areas especially appreciated:
 - **Integration adapters** for other LLM providers
 - **Bug reports** via GitHub Issues
 
-Before contributing, please read `instructions/shared/` to understand the pattern for instructions files — they are pure NLP professional job descriptions, no bash, no API syntax.
+Start with [CONTRIBUTING.md](/home/adoleh/Documents/incubator-os/CONTRIBUTING.md) for the development workflow, validation commands, PR expectations, and project-specific conventions.
 
 ---
 
