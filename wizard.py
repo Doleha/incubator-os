@@ -235,6 +235,9 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
+    except EOFError:
+        print("\nCancelled: no interactive input available.")
+        raise SystemExit(1)
     except KeyboardInterrupt:
         print("\nCancelled.")
         raise SystemExit(130)

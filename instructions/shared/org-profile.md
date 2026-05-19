@@ -4,7 +4,7 @@
 > To update, run python3 wizard.py (or edit org.config.json) and re-run ./setup.sh.
 
 ## Who We Are
-**Name:** Your Org Name
+**Name:** Your Organization Name
 **Mission:** Full mission statement
 **Community Served:** Who you serve
 **Website:** https://yourorg.org
@@ -14,15 +14,15 @@
 
 ### Incubator Program
 **Program Name:** Incubator Program
-**Human Lead:** Br. Fahad
-**Contact:** fahad@yourorg.org
+**Human Lead:** Incubator Program Director
+**Contact:** incubator@yourorg.org
 **Serves:** Early-stage founders needing foundational support
 **Readiness Score Range:** 41-65
 
 ### Accelerator Program
 **Program Name:** Accelerator Program
-**Human Lead:** Sr. Darain
-**Contact:** darain@yourorg.org
+**Human Lead:** Accelerator Program Director
+**Contact:** accelerator@yourorg.org
 **Serves:** Growth-stage founders ready to scale
 **Readiness Score Range:** 66-100
 
@@ -36,5 +36,5 @@
 
 ## Routing Reference
 - Score 0-40: Decline with constructive feedback and a path forward
-- Score 41-65: Route to Incubator Program -- contact Br. Fahad (fahad@yourorg.org)
-- Score 66-100: Route to Accelerator Program -- contact Sr. Darain (darain@yourorg.org)
+- Score 41-65: Route to Incubator Program -- contact Incubator Program Director (incubator@yourorg.org)
+- Score 66-100: Route to Accelerator Program -- contact Accelerator Program Director (accelerator@yourorg.org)
