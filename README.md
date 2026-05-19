@@ -1,6 +1,6 @@
 # Incubator/Accelerator OS
 
-**A self-building AI organization that runs a nonprofit incubator and accelerator — built natively on Paperclip.**
+**Open-source operating system for nonprofit incubators and accelerators — built on Paperclip, staffed by agents, governed by humans.**
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Built on Paperclip](https://img.shields.io/badge/Built%20on-Paperclip-orange.svg)
@@ -10,13 +10,46 @@ Quick Start · [Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md) · [Pape
 
 ---
 
+Start with one Executive Director agent. It drafts strategy, requests director hires, builds departments, and runs ongoing operations on heartbeat schedules. Staff review decisions in a dedicated UI while Paperclip enforces approvals, budgets, and auditability.
+
+This repository packages the domain layer for incubator and accelerator programs: instructions, schema, adapter logic, operator UI, setup flow, and communication bridges. Paperclip remains the control plane underneath.
+
+---
+
+## Architecture Snapshot
+
+```text
+Board approvals
+   ↓
+Paperclip control plane
+   ↓
+Incubator/Accelerator OS domain layer
+   ↓
+local_llm adapter + Postgres schema + Staff UI + Messaging bridges
+```
+
+---
+
+## At A Glance
+
+| Area | What it gives you |
+|---|---|
+| Organization model | Executive Director, directors, workers, reporting lines, and phased hiring |
+| Operating cadence | Scheduled heartbeats, task routing, escalation paths, and approval gates |
+| Domain layer | Founder intake, cohorts, ventures, mentors, grants, donors, compliance, alumni, investors |
+| Oversight | Decision queue, corrective action tracking, board-level escalation banner, audit logs |
+| Local AI stack | `llama-server` + `qwen3.6:35b-a3b` + custom `local_llm` Paperclip adapter |
+| Extensibility | Adaptable to other domains through [CLAUDE.md](CLAUDE.md), instructions, schema, and workflows |
+
+---
+
 ## What This Is
 
-Incubator/Accelerator OS is an open source operations platform for nonprofit incubator and accelerator organizations. It is built natively on top of [Paperclip](https://github.com/paperclipai/paperclip) — an AI agent orchestration platform — the same way Supabase is built on top of Postgres. Paperclip is the engine; this project is the domain layer.
+Incubator/Accelerator OS is an open source operations platform for nonprofit incubator and accelerator organizations. It is built natively on top of [Paperclip](https://github.com/paperclipai/paperclip), the same way Supabase is built on top of Postgres. Paperclip is the engine; this repository is the domain implementation.
 
-Although this repository is packaged for a nonprofit incubator/accelerator use case, the same foundation can be adapted for commercial entities and other operating models by changing the domain layer: [CLAUDE.md](CLAUDE.md), agent instructions, shared references, skills, schema, and related workflow definitions.
+Although this repository is packaged for a nonprofit incubator and accelerator use case, the same foundation can be adapted for commercial entities and other operating models by changing the domain layer: [CLAUDE.md](CLAUDE.md), agent instructions, shared references, skills, schema, and related workflow definitions.
 
-You start with one agent: the Executive Director. On its first run, it drafts an organizational strategy and submits it for your approval. Once approved, it requests director hires — one for each department. You approve each hire. Each director then builds their own team. Workers run on scheduled heartbeats, process domain data, write recommendations to a decision queue, and escalate to you when they need human judgment. You are the Board.
+You start with one agent: the Executive Director. On its first run, it drafts an organizational strategy and submits it for your approval. Once approved, it requests director hires for the initial departments. Each director then builds their own team. Workers run on scheduled heartbeats, process domain data, write recommendations to a decision queue, and escalate when human judgment is required. You are the Board.
 
 The platform covers the full nonprofit operational surface: program delivery (incubator and accelerator tracks), finance, HR, marketing, compliance, fundraising, donor management, alumni relations, investor relations, community engagement, and a continuous quality and performance monitoring system.
 
