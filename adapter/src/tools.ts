@@ -1,5 +1,6 @@
 import type { Pool } from 'pg';
 import type { paperclipClient as PaperclipClient } from './paperclip-client.js';
+import { validateDecisionArgs, DecisionValidationError } from './schema.js';
 
 // SQL SELECT-only enforcement — prevents agents from mutating data via query_database.
 // Write operations go through dedicated tools (write_decision, log_event) only.
@@ -126,6 +127,14 @@ export async function executeToolCall(
     }
 
     case 'write_decision': {
+      try {
+        validateDecisionArgs(args);
+      } catch (err) {
+        if (err instanceof DecisionValidationError) {
+          return { error: err.message, flag: 'schema_validation_failed' };
+        }
+        throw err;
+      }
       const result = await db.query(
         `INSERT INTO decisions
          (entity_type, entity_id, department, agent_role, recommendation, reasoning, data)

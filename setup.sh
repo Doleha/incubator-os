@@ -10,6 +10,38 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+# Status subcommand: ./setup.sh status — inspect without running setup
+if [ "$1" = "status" ]; then
+  source .env 2>/dev/null || true
+  echo "=== Seedwork Setup Status ==="
+  [ -f ./models/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf ] \
+    && echo "  ✓ Model file present" \
+    || echo "  ✗ Model file missing — run: bash scripts/download-model.sh"
+  TABLES=$(psql "$DATABASE_URL" -tAc \
+    "SELECT tablename FROM pg_tables WHERE schemaname='public'" 2>/dev/null)
+  for t in cohorts founders ventures milestones mentors matches sessions \
+            decisions events_log agent_performance schema_migrations; do
+    echo "$TABLES" | grep -q "^${t}$" \
+      && echo "  ✓ Table: $t" \
+      || echo "  ✗ Table missing: $t"
+  done
+  COMPANY_ID=$(grep COMPANY_ID .ids 2>/dev/null | cut -d= -f2 || echo "")
+  [ -n "$COMPANY_ID" ] \
+    && echo "  ✓ Company: $COMPANY_ID" \
+    || echo "  ✗ Company not created — run: ./setup.sh"
+  CEO_ID=$(grep CEO_ID .ids 2>/dev/null | cut -d= -f2 || echo "")
+  [ -n "$CEO_ID" ] \
+    && echo "  ✓ Executive Director: $CEO_ID" \
+    || echo "  ✗ Executive Director not created"
+  curl -sf http://localhost:3100/health > /dev/null 2>&1 \
+    && echo "  ✓ Paperclip running" \
+    || echo "  ✗ Paperclip not reachable"
+  curl -sf http://localhost:9874/health > /dev/null 2>&1 \
+    && echo "  ✓ llama-server running" \
+    || echo "  ✗ llama-server not reachable"
+  exit 0
+fi
+
 echo -e "${GREEN}"
 echo "╔══════════════════════════════════════════════════════╗"
 echo "║     Seedwork — Setup       ║"
@@ -31,6 +63,28 @@ for var in PAPERCLIP_API_KEY DATABASE_URL; do
     exit 1
   fi
 done
+
+# Hardware pre-flight: verify GPU VRAM and CUDA compute capability
+echo "  Checking GPU hardware requirements..."
+if ! command -v nvidia-smi &> /dev/null; then
+  echo -e "${RED}Error: nvidia-smi not found. Install NVIDIA drivers first.${NC}"
+  echo "  https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html"
+  exit 1
+fi
+VRAM_MB=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1 | tr -d ' ')
+VRAM_GB=$(( VRAM_MB / 1024 ))
+if [ "$VRAM_GB" -lt 24 ]; then
+  echo -e "${RED}Error: GPU has ${VRAM_GB}GB VRAM. Minimum required is 24GB.${NC}"
+  echo "  qwen3.6:35b-a3b UD-Q4_K_XL requires ~22GB VRAM with --n-cpu-moe 17."
+  exit 1
+fi
+COMPUTE=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -n1 | tr -d ' ')
+COMPUTE_MAJOR=$(echo "$COMPUTE" | cut -d'.' -f1)
+if [ "$COMPUTE_MAJOR" -lt 8 ]; then
+  echo -e "${YELLOW}Warning: GPU compute capability $COMPUTE detected. Flash Attention requires 8.0+.${NC}"
+  echo "  Continuing — llama-server will run without Flash Attention."
+fi
+echo "  GPU: ${VRAM_GB}GB VRAM, compute $COMPUTE ✓"
 
 # Validate org config and generate org-profile.md before starting services
 if [ ! -f org.config.json ]; then
@@ -83,9 +137,7 @@ for i in $(seq 1 24); do   # 24 × 5s = 120s
 done
 
 echo -e "${YELLOW}[4/5] Applying Phase 1 database migrations...${NC}"
-for f in migrations/phase1/*.sql; do
-  psql "$DATABASE_URL" -f "$f" > /dev/null && echo "  ✓ $f"
-done
+python3 scripts/migrate.py 1
 
 echo -e "${YELLOW}[5/5] Creating company and Executive Director...${NC}"
 bash setup/init-company.sh

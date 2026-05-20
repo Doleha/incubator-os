@@ -23,9 +23,7 @@ if [ ! -d "migrations/phase${PHASE}" ]; then
 fi
 
 echo "Applying Phase $PHASE migrations..."
-for f in "migrations/phase${PHASE}"/*.sql; do
-  psql "$DATABASE_URL" -f "$f" > /dev/null && echo "  ✓ $f"
-done
+python3 scripts/migrate.py "$PHASE"
 
 echo ""
 echo "Phase $PHASE migrations applied."

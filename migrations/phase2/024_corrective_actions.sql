@@ -23,6 +23,11 @@ CREATE TABLE IF NOT EXISTS corrective_actions (
   outcome TEXT CHECK (outcome IN ('improved','no_change','degraded')),
   verification_run_ids TEXT[],
   cycle_count INTEGER NOT NULL DEFAULT 0,
+  instructions_update_count INTEGER NOT NULL DEFAULT 0,
+  -- Auto-freeze: if instructions_update_count >= 3 AND instructions_last_updated_at
+  -- > NOW() - INTERVAL '14 days', do NOT apply another update_instructions action.
+  -- Performance Analyst must escalate to Board instead of attempting another update.
+  instructions_last_updated_at TIMESTAMPTZ,
   board_notified_at TIMESTAMPTZ,
   board_notification_summary TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
