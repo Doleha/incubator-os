@@ -77,8 +77,8 @@ pnpm build
 ### Package-level examples
 
 ```bash
-pnpm --filter @incubator-os/adapter typecheck
-pnpm --filter @incubator-os/staff-ui build
+pnpm --filter @seedwork/adapter typecheck
+pnpm --filter @seedwork/staff-ui build
 ```
 
 ### Scripts and config

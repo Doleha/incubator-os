@@ -143,7 +143,7 @@ def print_section(title: str) -> None:
 
 
 def main() -> int:
-    print("Nonprofit Incubator/Accelerator OS")
+    print("Seedwork")
     print("Organization setup wizard")
     print("Press Enter to keep the current value shown in brackets.")
 

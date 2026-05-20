@@ -1,5 +1,5 @@
 {
-  "name": "@incubator-os/adapter",
+  "name": "@seedwork/adapter",
   "version": "1.0.0",
   "private": true,
   "type": "module",

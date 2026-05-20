@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup.sh — One-command installer for Nonprofit Incubator/Accelerator OS
+# setup.sh — One-command installer for Seedwork
 # Usage: ./setup.sh
 # Run this once after cloning the repo and filling in .env
 
@@ -12,7 +12,7 @@ NC='\033[0m'
 
 echo -e "${GREEN}"
 echo "╔══════════════════════════════════════════════════════╗"
-echo "║     Nonprofit Incubator/Accelerator OS — Setup       ║"
+echo "║     Seedwork — Setup       ║"
 echo "╚══════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 

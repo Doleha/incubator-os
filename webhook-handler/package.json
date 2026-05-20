@@ -1,5 +1,5 @@
 {
-  "name": "@incubator-os/webhook-handler",
+  "name": "@seedwork/webhook-handler",
   "version": "1.0.0",
   "private": true,
   "type": "module",

@@ -53,6 +53,10 @@
     "facebook": "",
     "youtube": ""
   },
+  "technology": {
+    "platform": "Seedwork",
+    "powered_by": "Paperclip"
+  },
   "budget": {
     "fiscal_year": 2025,
     "annual_budget_usd": 0

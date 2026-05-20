@@ -1,4 +1,4 @@
-# CLAUDE.md — Nonprofit Incubator/Accelerator OS
+# CLAUDE.md — Seedwork
 ## Autonomous Build Brief
 
 ---
@@ -1578,7 +1578,7 @@ top-level keys:
     "whatsapp_business": ""
   },
   "technology": {
-    "platform": "Nonprofit Incubator/Accelerator OS",
+    "platform": "Seedwork",
     "powered_by": "Paperclip"
   },
   "budget": {
@@ -1856,7 +1856,7 @@ fi
 
 echo -e "${GREEN}"
 echo "╔══════════════════════════════════════════════════════╗"
-echo "║     Nonprofit Incubator/Accelerator OS — Setup       ║"
+echo "║     Seedwork — Setup       ║"
 echo "╚══════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
@@ -2482,8 +2482,8 @@ Verify GPU access:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/incubator-os.git
-cd incubator-os
+git clone https://github.com/your-org/seedwork.git
+cd seedwork
 
 # 2. Create your organization identity (do this FIRST)
 python3 wizard.py
@@ -3371,7 +3371,7 @@ PAPERCLIP_API_URL=http://localhost:3100
 PAPERCLIP_API_KEY=your_paperclip_api_key
 
 # Database (shared — Paperclip and adapter both connect here)
-DATABASE_URL=postgresql://user:password@localhost:5432/incubator_os
+DATABASE_URL=postgresql://user:password@localhost:5432/seedwork
 
 # LLM (llama-server)
 LLM_BASE_URL=http://llm:9874

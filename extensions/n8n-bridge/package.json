@@ -1,5 +1,5 @@
 {
-  "name": "@incubator-os/n8n-bridge",
+  "name": "@seedwork/n8n-bridge",
   "version": "1.0.0",
   "private": true,
   "type": "module",

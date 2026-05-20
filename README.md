@@ -199,8 +199,8 @@ This should display your GPU. If it fails, install or reinstall the NVIDIA Conta
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/incubator-os.git
-cd incubator-os
+git clone https://github.com/your-org/seedwork.git
+cd seedwork
 
 # 2. Run the organization setup wizard FIRST
 python3 wizard.py
@@ -511,7 +511,7 @@ See the full roadmap in [ROADMAP.md](ROADMAP.md).
 ## Project Structure
 
 ```
-incubator-os/
+seedwork/
 ├── ROADMAP.md          Product and project roadmap
 ├── instructions/        Agent instructions files (55+ NLP job descriptions)
 ├── migrations/          SQL migrations (30 files across 3 phases)
@@ -550,8 +550,8 @@ For contributor workflow details, validation guidance, and project-specific conv
 
 ## Community
 
-- [GitHub Issues](https://github.com/Doleha/incubator-os/issues) — bugs and feature requests
-- [Pull Requests](https://github.com/Doleha/incubator-os/pulls) — active contributions
+- [GitHub Issues](https://github.com/Doleha/seedwork/issues) — bugs and feature requests
+- [Pull Requests](https://github.com/Doleha/seedwork/pulls) — active contributions
 - [Paperclip](https://github.com/paperclipai/paperclip) — underlying orchestration platform
 
 ---
@@ -572,11 +572,11 @@ Start with [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, vali
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=Doleha%2Fincubator-os&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=Doleha%2Fseedwork&type=date&legend=top-left">
  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Doleha/incubator-os&type=date&theme=dark&legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Doleha/incubator-os&type=date&legend=top-left" />
-    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Doleha/incubator-os&type=date&legend=top-left" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Doleha/seedwork&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Doleha/seedwork&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Doleha/seedwork&type=date&legend=top-left" />
  </picture>
 </a>
 
